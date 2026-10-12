@@ -11,7 +11,9 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 function Line({ children, delay }: { children: React.ReactNode; delay: number }) {
   return (
-    <span className="block overflow-hidden pb-[0.08em]">
+    // Extra room above/below (cancelled by negative margins) so tall glyphs
+    // like the "f" and the dot of the "i" aren't clipped by the reveal mask.
+    <span className="-my-[0.14em] block overflow-hidden pt-[0.14em] pb-[0.14em]">
       <motion.span
         className="block"
         initial={{ y: "110%" }}
@@ -62,7 +64,7 @@ export function Hero() {
             s&apos;apprend<span className="text-gold">.</span>
           </Line>
           <Line delay={0.44}>
-            <em className="text-gradient-gold pr-2">Enfin.</em>
+            <em className="text-gradient-gold py-[0.14em] pr-2">Enfin.</em>
           </Line>
         </h1>
 
